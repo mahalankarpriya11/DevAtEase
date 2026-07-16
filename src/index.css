@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255, 255, 255;
+    --surface: 248, 250, 252;
+    --text-primary: 15, 23, 42;
+    --text-muted: 100, 116, 139;
+    --primary: 37, 99, 235;
+    --primary-hover: 29, 78, 216;
+    --border: 226, 232, 240;
+  }
+
+  :root.dark {
+    --background: 11, 15, 25;
+    --surface: 17, 24, 39;
+    --text-primary: 249, 250, 251;
+    --text-muted: 156, 163, 175;
+    --primary: 59, 130, 246;
+    --primary-hover: 37, 99, 235;
+    --border: 31, 41, 55;
+  }
+
+  body {
+    @apply bg-[rgb(var(--background))] text-[rgb(var(--text-primary))] font-sans transition-colors duration-300 antialiased selection:bg-primary/20 selection:text-[rgb(var(--primary))];
+    background-image: radial-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  body.dark {
+    background-image: radial-gradient(rgba(59, 130, 246, 0.05) 1.2px, transparent 0);
+    background-size: 32px 32px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-sans;
+  }
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.2);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.4);
+}
+
+/* Subtle gradient animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
